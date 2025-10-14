@@ -98,7 +98,7 @@ class DocumentRetriever:
                 'title': chunk['title'],
                 'similarity_score': search_result.get('similarity_score', 0.0),
                 'relevance_score': relevance_score,
-                'snippet': truncate_snippet(chunk['chunk_text'], 200)
+                'snippet': truncate_snippet(chunk['chunk_text'], 150)
             }
             
         except Exception as e:

@@ -45,7 +45,21 @@ async def lifespan(app: FastAPI):
 # Create FastAPI app
 app = FastAPI(
     title="RAG Web Crawler Service",
-    description="A complete RAG service that crawls websites, indexes content, and provides grounded Q&A",
+    description="""
+    A complete Retrieval-Augmented Generation (RAG) service that:
+    
+    * **Crawls websites** with robots.txt respect and domain boundaries
+    * **Indexes content** with chunking and vector embeddings
+    * **Provides grounded Q&A** with source citations and proper refusals
+    * **Tracks performance** with comprehensive metrics and observability
+    
+    ## Key Features:
+    - Polite crawling with configurable delays
+    - FAISS vector indexing with embeddings
+    - Context-only answering with safety guardrails
+    - Source citations and relevance scoring
+    - Performance metrics and error tracking
+    """,
     version="1.0.0",
     lifespan=lifespan
 )

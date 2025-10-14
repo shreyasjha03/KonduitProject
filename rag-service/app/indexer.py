@@ -108,6 +108,13 @@ class VectorIndexer:
         
         logger.info(f"Indexing completed: {len(embeddings)} vectors in {indexing_time:.2f}s")
         
+        # Auto-reload the index after indexing
+        try:
+            self.load_index()
+            logger.info("Index automatically reloaded after indexing")
+        except Exception as e:
+            logger.warning(f"Failed to auto-reload index: {e}")
+        
         return {
             'vector_count': len(embeddings),
             'chunk_count': len(all_chunks),

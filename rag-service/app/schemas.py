@@ -29,9 +29,9 @@ class IndexResponse(BaseModel):
     errors: List[str] = []
 
 class SourceSnippet(BaseModel):
-    url: str
-    snippet: str
-    relevance_score: float
+    url: str = Field(description="Source URL of the content")
+    snippet: str = Field(description="Relevant text snippet from the source", max_length=500)
+    relevance_score: float = Field(description="Relevance score (0.0 to 1.0)", ge=0.0, le=1.0)
 
 class AskRequest(BaseModel):
     question: str = Field(min_length=1, max_length=1000)
@@ -43,11 +43,11 @@ class Timings(BaseModel):
     total_ms: float
 
 class AskResponse(BaseModel):
-    answer: str
-    sources: List[SourceSnippet]
-    timings: Timings
-    grounded: bool = True
-    refusal_reason: Optional[str] = None
+    answer: str = Field(description="Generated answer based on retrieved content")
+    sources: List[SourceSnippet] = Field(description="Source URLs and snippets used for the answer")
+    timings: Timings = Field(description="Performance timing metrics")
+    grounded: bool = Field(description="Whether the answer is grounded in retrieved content", default=True)
+    refusal_reason: Optional[str] = Field(description="Reason for refusal if answer cannot be provided", default=None)
 
 class HealthResponse(BaseModel):
     status: str
