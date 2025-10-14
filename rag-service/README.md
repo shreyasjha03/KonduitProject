@@ -32,7 +32,7 @@ Crawl a website starting from the given URL.
 
 ```json
 {
-  "start_url": "https://example.com",
+  "start_url": "website url",
   "max_pages": 10,
   "max_depth": 2,
   "crawl_delay_ms": 1000
@@ -44,7 +44,7 @@ Crawl a website starting from the given URL.
 {
   "page_count": 5,
   "skipped_count": 0,
-  "urls": ["https://example.com", "https://example.com/about"],
+  "urls": ["website url", "website url"],
   "crawl_time_seconds": 12.5,
   "errors": []
 }
@@ -87,7 +87,7 @@ Ask a question and get a grounded answer with sources.
   "answer": "Based on the crawled content, this website is about...",
   "sources": [
     {
-      "url": "https://example.com",
+      "url": "website url",
       "snippet": "Relevant text snippet...",
       "relevance_score": 0.85
     }
